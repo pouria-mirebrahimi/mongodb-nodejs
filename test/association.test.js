@@ -18,7 +18,7 @@ describe("association testing", () => {
 		});
 	});
 
-	it.only("load an user and its blogPost relationship", (done) => {
+	it("load an user and its blogPost relationship", (done) => {
 		User.findOne({ name: "pouria" })
 			.populate("blogPosts")
 			.then((found) => {
