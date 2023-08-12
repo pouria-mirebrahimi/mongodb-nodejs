@@ -1,0 +1,24 @@
+{
+	"name": "mongodb-nodejs",
+	"version": "1.0.0",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"dev": "nodemon src/index.js",
+		"test": "mocha",
+		"test:watch": "nodemon --exec 'mocha -R min'"
+	},
+	"repository": "git@github.com:pouria-mirebrahimi/mongodb-nodejs.git",
+	"author": "Pouria Mirebrahimi <pouria.mirebrahimi@gmail.com>",
+	"license": "MIT",
+	"dependencies": {
+		"mongoose": "^7.4.3"
+	},
+	"devDependencies": {
+		"@types/chai": "^4.3.5",
+		"chai": "^4.3.7",
+		"esm": "^3.2.25",
+		"mocha": "^10.2.0",
+		"nodemon": "^3.0.1"
+	}
+}
