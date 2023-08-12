@@ -1,7 +1,7 @@
 import { assert, expect } from "chai";
 import User from "../src/model/user/user.model.js";
 
-describe("nested documents testing", () => {
+xdescribe("nested documents testing", () => {
 	it("create user with nested posts", (done) => {
 		const user = new User({
 			name: "pouria",

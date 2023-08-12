@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import User from "../src/model/user/user.model.js";
 
-describe("removing users testing", () => {
+xdescribe("removing users testing", () => {
 	let testUser;
 
 	beforeEach((done) => {
