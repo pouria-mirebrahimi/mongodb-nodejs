@@ -5,8 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "nodemon src/index.js",
-		"test": "mocha",
-		"test:watch": "nodemon --exec 'mocha -R min'"
+		"test": "mocha --timeout 2000",
+		"test:watch": "nodemon --exec 'mocha -R min --timeout 2000'"
 	},
 	"repository": "git@github.com:pouria-mirebrahimi/mongodb-nodejs.git",
 	"author": "Pouria Mirebrahimi <pouria.mirebrahimi@gmail.com>",
