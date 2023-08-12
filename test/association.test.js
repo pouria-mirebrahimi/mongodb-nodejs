@@ -18,12 +18,30 @@ describe("association testing", () => {
 		});
 	});
 
-	it.only("create associated user, blogPost, and comment", (done) => {
+	it.only("load an user and its blogPost relationship", (done) => {
 		User.findOne({ name: "pouria" })
 			.populate("blogPosts")
 			.then((found) => {
 				expect(found.blogPosts.length).to.equal(1);
 				expect(found.blogPosts[0].title).to.equal(blogPost.title);
+				done();
+			});
+	});
+
+	it.only("load an user and its full nested relationships", (done) => {
+		User.findOne({ name: "pouria" })
+			.populate({
+				path: "blogPosts",
+				populate: {
+					path: "comments",
+				},
+			})
+			.then((found) => {
+				expect(found.blogPosts.length).to.equal(1);
+				expect(found.blogPosts[0].comments.length).to.equal(1);
+				expect(found.blogPosts[0].comments[0].content).to.equal(
+					comment.content
+				);
 				done();
 			});
 	});
