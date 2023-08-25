@@ -18,7 +18,7 @@ describe("association testing", () => {
 		});
 	});
 
-	it("load an user and its blogPost relationship", (done) => {
+	xit("load an user and its blogPost relationship", (done) => {
 		User.findOne({ name: "pouria" })
 			.populate("blogPosts")
 			.then((found) => {
@@ -32,16 +32,22 @@ describe("association testing", () => {
 		User.findOne({ name: "pouria" })
 			.populate({
 				path: "blogPosts",
+				model: "blogPost",
 				populate: {
 					path: "comments",
+					model: "comment",
+					populate: {
+						path: "user",
+						model: "user",
+					},
 				},
 			})
 			.then((found) => {
-				expect(found.blogPosts.length).to.equal(1);
-				expect(found.blogPosts[0].comments.length).to.equal(1);
-				expect(found.blogPosts[0].comments[0].content).to.equal(
-					comment.content
-				);
+				const theBlogPost = found.blogPosts;
+				expect(theBlogPost.length).to.equal(1);
+				expect(theBlogPost[0].comments.length).to.equal(1);
+				expect(theBlogPost[0].comments[0].content).to.equal(comment.content);
+				expect(theBlogPost[0].comments[0].user.name).to.equal(user.name);
 				done();
 			});
 	});
