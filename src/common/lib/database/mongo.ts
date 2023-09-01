@@ -14,4 +14,8 @@ export class MongoDB extends Database {
       return Promise.reject(e.message);
     }
   }
+
+  public async close(): Promise<void> {
+    mongoose.connection.close();
+  }
 }

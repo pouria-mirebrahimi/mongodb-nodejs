@@ -5,11 +5,11 @@ const config: Config = {
   verbose: true,
   rootDir: '.',
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'mts'],
-  testMatch: ['**/test/*.(spec|test).(j|t)s?(x)'],
+  testMatch: ['**/test/**/*.(spec|test).(j|t)s?(x)'],
   transform: {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
-  collectCoverageFrom: ['src/model/**/*.(t|j)s'],
+  collectCoverageFrom: ['src/**/*.(t|j)s'],
   coverageDirectory: './coverage',
   testEnvironment: 'node',
 };
