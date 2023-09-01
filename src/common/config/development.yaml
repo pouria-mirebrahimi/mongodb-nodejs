@@ -1,0 +1,7 @@
+# Development config file
+---
+  database: 
+    mongodb:
+        port: 27017
+        host: localhost
+        name: db-mongo-tutorial
