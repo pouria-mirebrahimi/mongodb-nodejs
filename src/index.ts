@@ -1,21 +1,10 @@
-import { Database } from './common/lib/database/database';
-import { MongoDB } from './common/lib/database/mongo';
-import { ConfigService } from './common/lib/helper/config.service';
-import { IDatabaseDetails } from './common/lib/interface/database.interface';
+// NOTE - find more in folders/files bellow
 
-(async () => {
-  ConfigService.init();
+// LINK ../example/01_mongodb/connection.ts:6
+// LINK ../test/01_mongodb//connection/connection.spec.ts:6
 
-  const config = ConfigService.get<IDatabaseDetails>('database.mongodb');
-  const uri = `mongodb://${config.host}:${config.port}/${config.name}`;
-  const mongodb: Database = new MongoDB(uri);
-  await mongodb
-    .connect()
-    .then((success) => console.log(success))
-    .catch((error) => {
-      console.log(error);
-      process.exit(1);
-    });
-
-  await mongodb.close();
-})();
+console.log(`
+Database cracking course!
+- For the help, see the /doc/ folder at the root
+- For more commands, see the /scripts/ in the package.json
+`);
