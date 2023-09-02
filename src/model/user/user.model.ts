@@ -1,22 +1,41 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
+import { IUserProperties } from './interface/user.interface';
+import { IUserMethods, UserModel } from './interface/user.interface';
 
-const UserSchema = mongoose.Schema;
+const UserSchema = new Schema<IUserProperties, UserModel, IUserMethods>({
+  firstName: {
+    type: String,
+    required: true,
+  },
 
-const UserModelSchema = new UserSchema({
-  name: {
+  lastName: {
     type: String,
     required: true,
   },
 
   age: {
     type: Number,
-    min: [8, 'Age is below of valid threshold'],
-    max: [100, 'Age is above of valid threshold'],
-    required: true,
+    min: [8, 'too young'],
+    max: [100, 'too old'],
   },
 
-  createdAt: Date,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-const UserModel = mongoose.model('User', UserModelSchema);
+UserSchema.method('fullName', function fullName() {
+  return `${this.firstName} ${this.lastName}`;
+});
+
+UserSchema.static('goldenName', function goldenName(name: string) {
+  return name === 'Pouria';
+});
+
+UserSchema.virtual('fullNameWithAge').get(function () {
+  return `${this.firstName} ${this.lastName}, ${this.age}`;
+});
+
+const UserModel = model<IUserProperties, UserModel>('User', UserSchema);
 export { UserModel };

@@ -3,7 +3,7 @@ import { IDatabaseDetails } from '../../../src/common/lib/interface/database.int
 import { MongoDB } from '../../../src/common/lib/database/mongo';
 import { Database } from '../../../src/common/lib/database/database';
 
-describe('test connection to mongodb database', () => {
+describe('connection to mongodb database', () => {
   let config: IDatabaseDetails;
   let mongodb: Database;
 
